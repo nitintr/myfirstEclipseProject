@@ -12,6 +12,7 @@ import org.springframework.context.ApplicationContextAware;
 
 
 /*First Changes */
+/*Second Changes */
 public class Triangle implements ApplicationContextAware, BeanNameAware, InitializingBean, DisposableBean{
 	private String beanName;
 	
