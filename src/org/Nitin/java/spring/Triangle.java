@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
+
+/*First Changes */
 public class Triangle implements ApplicationContextAware, BeanNameAware, InitializingBean, DisposableBean{
 	private String beanName;
 	
