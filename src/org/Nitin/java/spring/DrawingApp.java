@@ -25,17 +25,21 @@ public class DrawingApp {
 		System.out.println("---------------------------------");		
 		Triangle triangleBeanAppContext = (Triangle) context.getBean("triangleBean");
 		triangleBeanAppContext.draw();
+		
 		System.out.println("---------------------------------");
 		System.out.println("AutoWire!!!");
 		triangleBeanAppContext = (Triangle) context.getBean("triangleBean-autowire");
 		triangleBeanAppContext.draw();
+		
 		System.out.println("---------------------------------");
 		System.out.println("Bean Inheritance!!!");
 		triangleBeanAppContext = (Triangle) context.getBean("triangleBean1");
 		triangleBeanAppContext.draw();
+		
 		System.out.println("---------------------------------");
 		triangleBeanAppContext = (Triangle) context.getBean("triangleBean-autowire1");
 		triangleBeanAppContext.draw();
+		
 		System.out.println("---------------------------------");
 		triangleBeanAppContext = (Triangle) context.getBean("triangleBean-autowire2");
 		triangleBeanAppContext.draw();	

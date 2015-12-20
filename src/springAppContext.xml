@@ -83,6 +83,7 @@
     <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
     	<property name="locations" value="pointsconfig.properties" />
     </bean>
+    <bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor" />
     <!-- First Change - 20/12/2015 - Ends -->
     
 </beans>
