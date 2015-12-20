@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
 <beans>
-    <bean id="point0" class="org.Nitin.java.spring.Point">
-        <property name="x" value="0" />
-        <property name="y" value="0" />
+    <bean id="point0" class="org.Nitin.java.spring.Point" scope="prototype">
+        <property name="x" value="${point0.pointX}" />
+        <property name="y" value="${point0.pointY}" />
     </bean>
     <bean id="point1" class="org.Nitin.java.spring.Point" name="point1-name">
         <property name="x" value="20" />
@@ -13,7 +13,21 @@
     	<property name="x" value="0" />
     	<property name="y" value="20" />
 	</bean>           		
-   	
+
+    
+    
+    <bean id="pointA" class="org.Nitin.java.spring.Point">
+        <property name="x" value="0" />
+        <property name="y" value="0" />
+    </bean>
+    <bean id="pointB" class="org.Nitin.java.spring.Point" scope="prototype">
+        <property name="x" value="10" />
+        <property name="y" value="0" />
+    </bean>
+   	<bean id="pointC" class="org.Nitin.java.spring.Point">
+    	<property name="x" value="0" />
+    	<property name="y" value="10" />
+	</bean>   	
     
     <bean id="triangleBean" class="org.Nitin.java.spring.Triangle">
         <property name="type" value="Equilateral" />
@@ -38,20 +52,6 @@
             </list>
         </property>
     </bean> 
-    
-    
-    <bean id="pointA" class="org.Nitin.java.spring.Point">
-        <property name="x" value="0" />
-        <property name="y" value="0" />
-    </bean>
-    <bean id="pointB" class="org.Nitin.java.spring.Point">
-        <property name="x" value="10" />
-        <property name="y" value="0" />
-    </bean>
-   	<bean id="pointC" class="org.Nitin.java.spring.Point">
-    	<property name="x" value="0" />
-    	<property name="y" value="10" />
-	</bean>
 
     <bean id="triangleBean-autowire" class="org.Nitin.java.spring.Triangle" autowire="byName" >
         <property name="points">
@@ -62,19 +62,27 @@
             </list>
         </property>       
     </bean>
-
-    <bean id="triangleBean1" class="org.Nitin.java.spring.Triangle" parent="triangleBean">
-    </bean>
-    <bean id="triangleBean-autowire1" class="org.Nitin.java.spring.Triangle" autowire="byName" parent="triangleBean-autowire">
-    </bean>
+    
+    <bean id="triangleBean1" class="org.Nitin.java.spring.Triangle" parent="triangleBean"></bean>
     <bean id="triangleBean-autowire2" class="org.Nitin.java.spring.Triangle" parent="triangleBean-autowire">
         <property name="points">
 	        <list merge="true">
 	            <ref bean="point0" />
 	        </list>
         </property>
+    </bean>    
+    <bean id="triangleBean-autowire1" class="org.Nitin.java.spring.Triangle" autowire="byName" parent="triangleBean-autowire">    </bean>
+    
+    <bean id="circleBean" class="org.Nitin.java.spring.Circle" >
+    	<property name="center" ref="pointA" />
     </bean>
     
-    
+    <!-- First Change - 20/12/2015 - Starts -->
+    <bean class="org.Nitin.java.spring.DisplayNameBeanPostProcessor" />
+    <bean class="org.Nitin.java.spring.MyBeanFactoryPostProcessor" />
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+    	<property name="locations" value="pointsconfig.properties" />
+    </bean>
+    <!-- First Change - 20/12/2015 - Ends -->
     
 </beans>

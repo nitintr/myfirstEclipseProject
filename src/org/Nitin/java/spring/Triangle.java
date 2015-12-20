@@ -17,7 +17,7 @@ import org.springframework.context.ApplicationContextAware;
 
 /*Third Change - Ended */
 
-public class Triangle implements ApplicationContextAware, BeanNameAware, InitializingBean, DisposableBean{
+public class Triangle implements Shape, ApplicationContextAware, BeanNameAware, InitializingBean, DisposableBean{
 	private String beanName;
 	
 	private String type;
@@ -90,8 +90,10 @@ public class Triangle implements ApplicationContextAware, BeanNameAware, Initial
 		this.height = height;  
 	}
 	
+	@Override
 	public void draw()
 	{
+		System.out.println("Drawing Triangle");
 		System.out.println(getType() + " Trangle Drawn " + "of height " + getHeight() );
 		if(getPointA() == null) System.out.println("Point A is null"); else System.out.println("Point A:(" + getPointA().getX() + ", "+ getPointA().getY() + ")");
 		if(getPointB() == null) System.out.println("Point B is null"); else System.out.println("Point B:(" + getPointB().getX() + ", "+ getPointB().getY() + ")");
@@ -128,25 +130,27 @@ public class Triangle implements ApplicationContextAware, BeanNameAware, Initial
 	@Override
 	public void setApplicationContext(ApplicationContext context)
 			throws BeansException {
+		System.out.println("#ApplicationContextAware - setApplicationContext:");
 		this.context = context;
 		
 	}
 
 	@Override
 	public void setBeanName(String beanName) {
-		System.out.println("Bean Name is :" + beanName);
+		System.out.println("===========================");
+		System.out.println("#BeanNameAware - setBeanName :" + beanName);
 		this.beanName = beanName;
 	}
 
 	@Override
 	public void afterPropertiesSet() throws Exception {
-		System.out.println("Bean has been Initialized!!" + getBeanName());
+		System.out.println("#InitializingBean - afterPropertiesSet - Bean has been Initialized :" + getBeanName());
 		
 	}
 
 	@Override
 	public void destroy() throws Exception {
-		System.out.println("Bean has been destroyed via disposableBeans!! " + getBeanName());
+		System.out.println("#DisposableBean - destroy - Bean has been destroyed via disposableBeans :" + getBeanName());
 		
 	}
 }

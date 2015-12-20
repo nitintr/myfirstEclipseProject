@@ -47,6 +47,20 @@ public class DrawingApp {
 		contextAbstract.registerShutdownHook();
 		Triangle triangleBeanAbsAppContext = (Triangle) contextAbstract.getBean("triangleBean");
 		triangleBeanAbsAppContext.draw();
+	
+		System.out.println("---------------------------------");
+		System.out.println("Drawing Circle!!!");		
+		Circle circleBeanAbsAppContext = (Circle) contextAbstract.getBean("circleBean");
+		circleBeanAbsAppContext.draw();
+		
+		System.out.println("---------------------------------");
+		System.out.println("Impelementation!!!");
+		Shape shapeBeanAbsAppContext = (Shape) contextAbstract.getBean("triangleBean");
+		shapeBeanAbsAppContext.draw();
+		
+		shapeBeanAbsAppContext = (Shape) contextAbstract.getBean("circleBean");
+		shapeBeanAbsAppContext.draw();
+		
 
 	}
 
